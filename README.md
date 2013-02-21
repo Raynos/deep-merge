@@ -8,9 +8,30 @@ Deep merge objects with custom merging logic
 
 ## Example
 
-```js
+When you create a merge "strategy" you can configure how two
+values should merge when they have the same key. For example
+you may want them to be combined into a single array.
 
+```js
+var DeepMerge = require("deep-merge")
+var assert = require("assert")
+
+var merge = DeepMerge(function mergeStrategy(target, source, key) {
+    return [].concat(target, source)
+})
+
+var res = merge({
+    foo: ["hello"]
+}, {
+    foo: "goodbye"
+})
+
+assert.deepEqual(res, { foo: ["hello", "goodbye"] })
 ```
+
+By default objects will recursely call your `mergeStrategy` on
+your the values for a key and construct a new object with the
+key and the value returned from your merge
 
 ## Installation
 

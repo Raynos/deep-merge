@@ -42,3 +42,25 @@ test("deep merge arbitrary types", function (assert) {
 
     assert.end()
 })
+
+test("deep merge array and value", function (assert) {
+    var a = ["one", "two"]
+    var b = "three"
+    var res = deepmerge(a, b)
+
+    assert.deepEqual(a, ["one", "two"])
+    assert.deepEqual(res, ["one", "two", "three"])
+
+    assert.end()
+})
+
+test("gets key for the merging", function (assert) {
+    var merge = DeepMerge(function(a, b, key) {
+        assert.equal(a, "bar")
+        assert.equal(b, "baz")
+        assert.equal(key, "foo")
+        assert.end()
+    })
+
+    merge({ foo: "bar" }, { foo: "baz" })
+})
