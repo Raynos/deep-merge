@@ -64,3 +64,30 @@ test("gets key for the merging", function (assert) {
 
     merge({ foo: "bar" }, { foo: "baz" })
 })
+
+test("deep merging works", function (assert) {
+    var merge = DeepMerge(function (a, b) {
+        console.log("deep merge", a, b, arguments[2])
+        return b
+    })
+
+    var orig = {
+        a: {
+            b: {
+                c: "c"
+            }
+        }
+    }
+
+    var res = merge({}, orig)
+
+    assert.equal(res.a.b.c, "c")
+
+    res.a.d = "d"
+    assert.equal(orig.a.d, undefined)
+
+    res.a.b.e = "e"
+    assert.equal(orig.a.b.e, undefined)
+
+    assert.end()
+})

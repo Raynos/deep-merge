@@ -21,7 +21,11 @@ function DeepMerge(merger) {
             var targetValue = target[key]
 
             if (!(key in target)) {
-                result[key] = sourceValue
+                if (isObject(sourceValue)) {
+                    result[key] = deepmerge({}, sourceValue, key)
+                } else {
+                    result[key] = sourceValue
+                }
             } else {
                 result[key] = deepmerge(targetValue, sourceValue, key)
             }
