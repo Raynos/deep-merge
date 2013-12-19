@@ -33,6 +33,24 @@ By default objects will recursely call your `mergeStrategy` on
 your the values for a key and construct a new object with the
 key and the value returned from your merge
 
+### Merging multiple objects
+
+```js
+var DeepMerge = require("deep-merge/multiple")
+var merge = DeepMerge(function (a, b) {
+    return b
+})
+
+var obj = merge([
+    { a: "a" },
+    { b: "b" },
+    { c: { d: "d" } },
+    { c: { e: "e" } }
+])
+
+assert.deepEqual(obj.c, { d: "d", e: "e" })
+```
+
 ## Installation
 
 `npm install deep-merge`
