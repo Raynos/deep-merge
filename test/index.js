@@ -1,5 +1,6 @@
 var test = require("tape")
 
+var MultiMerge = require("../multiple")
 var DeepMerge = require("../index")
 var deepmerge = DeepMerge(function (target, source) {
     return [].concat(target, source)
@@ -25,9 +26,9 @@ test("deep merge objects", function (assert) {
     assert.deepEqual(a, { foo: "bar", bar: "baz" })
     assert.deepEqual(b, { bar: "foo", baz: "bar" })
     assert.deepEqual(res, {
-        foo: "bar"
-        , bar: ["baz", "foo"]
-        , baz: "bar"
+        foo: "bar",
+        bar: ["baz", "foo"],
+        baz: "bar"
     })
 
     assert.end()
@@ -67,7 +68,6 @@ test("gets key for the merging", function (assert) {
 
 test("deep merging works", function (assert) {
     var merge = DeepMerge(function (a, b) {
-        console.log("deep merge", a, b, arguments[2])
         return b
     })
 
@@ -89,5 +89,25 @@ test("deep merging works", function (assert) {
     res.a.b.e = "e"
     assert.equal(orig.a.b.e, undefined)
 
+    assert.end()
+})
+
+test("multi merge works", function (assert) {
+    var merge = MultiMerge(function (a, b) { return b })
+
+    var obj = merge([
+        { a: "a" },
+        { b: "b" },
+        { a: { c: "c" } },
+        { a: { d: "d" } },
+        { a: { c: "e", f: "f" } },
+        { g: { h: "h" } }
+    ])
+
+    assert.deepEqual(obj, {
+        a: { c: "e", f: "f", d: "d" },
+        b: "b",
+        g: { h: "h" }
+    })
     assert.end()
 })
