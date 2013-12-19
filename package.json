@@ -1,6 +1,6 @@
 {
   "name": "deep-merge",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Deep merge objects with custom merging logic",
   "keywords": [],
   "author": "Raynos <raynos2@gmail.com>",
