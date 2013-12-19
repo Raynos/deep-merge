@@ -43,9 +43,9 @@ key and the value returned from your merge
 
 ## MIT Licenced
 
-  [1]: https://secure.travis-ci.org/Colingo/deep-merge.png
-  [2]: http://travis-ci.org/Colingo/deep-merge
-  [3]: http://david-dm.org/Colingo/deep-merge/status.png
-  [4]: http://david-dm.org/Colingo/deep-merge
-  [5]: http://ci.testling.com/Colingo/deep-merge.png
-  [6]: http://ci.testling.com/Colingo/deep-merge
+  [1]: https://secure.travis-ci.org/Raynos/deep-merge.png
+  [2]: http://travis-ci.org/Raynos/deep-merge
+  [3]: http://david-dm.org/Raynos/deep-merge/status.png
+  [4]: http://david-dm.org/Raynos/deep-merge
+  [5]: http://ci.testling.com/Raynos/deep-merge.png
+  [6]: http://ci.testling.com/Raynos/deep-merge
