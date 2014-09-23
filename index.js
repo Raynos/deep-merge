@@ -34,5 +34,5 @@ function DeepMerge(merger) {
 }
 
 function isObject(x) {
-    return typeof x === "object" && x !== null
+    return typeof x === "object" && !Array.isArray(x) && x !== null
 }
