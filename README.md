@@ -6,6 +6,10 @@
 
 Deep merge objects with custom merging logic
 
+## Deprecated
+
+Use [deep-extend](https://github.com/unclechu/node-deep-extend) instead of this module.
+
 ## Example
 
 When you create a merge "strategy" you can configure how two
